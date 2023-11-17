@@ -1,0 +1,29 @@
+INSERT INTO TABLE
+
+
+CREATE DATABASE IF NOT EXISTS dataware;
+USE dataware;
+
+CREATE TABLE IF NOT EXISTS employees(id INT AUTO_INCREMENT PRIMARY KEY, 
+										firstName varchar(50), 
+										lastName varchar(50), 
+                                        email varchar(50), 
+                                        phone varchar(50),
+                                        role varchar(50),
+                                        team INT,
+                                        status varchar(50));
+                                        
+CREATE TABLE IF NOT EXISTS teams(id INT AUTO_INCREMENT PRIMARY KEY,
+								name varchar(50),
+                                dateCreation date);
+                                
+INSERT INTO employees(firstName, lastName , email , phone , role , team , status)
+VALUE("Ahmed" , "Asiri" , "dahmed@gmail.com" , "+21234665489" ,"Directeur general" , "2", "active");
+
+SELECT * FROM employees;
+SELECT * FROM teams;
+
+SELECT employees.id, employees.firstName, employees.lastName, employees.email, employees.phone,
+		employees.role, employees.status, employees.team, teams.name, teams.dateCreation
+FROM employees
+INNER JOIN teams ON employees.team = teams.id;
